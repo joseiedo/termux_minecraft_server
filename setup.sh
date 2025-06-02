@@ -1,9 +1,6 @@
-#!/bin/bash
 #!/data/data/com.termux/files/usr/bin/bash
 # Essa linha de cima é chamada de shebang. Serve pra dizer qual interpretador usar pra rodar o script.
 # https://pt.wikipedia.org/wiki/Shebang
-#
-#
 
 
 # Só pra avisar se o script der erro e parar de rodar.
