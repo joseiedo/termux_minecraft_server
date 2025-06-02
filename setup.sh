@@ -70,9 +70,9 @@ echo "online-mode=$ONLINE" >> server.properties
 
 # Link retirado daqui -> https://www.minecraft.net/pt-br/download/server
 echo "Baixando .jar do minecraft..."
-wget https://piston-data.mojang.com/v1/objects/e6ec2f64e6080b9b5d9b471b291c33cc7f509733/server.jar -O ./server.jar
+wget https://piston-data.mojang.com/v1/objects/e6ec2f64e6080b9b5d9b471b291c33cc7f509733/server.jar -O ~/$FOLDER_NAME/server.jar
 
-INIT_SCRIPT="java -Xms1G -Xmx$MAX_RAM_GB -jar server.jar nogui"
+INIT_SCRIPT="java -Xms1G -Xmx${MAX_RAM_GB}G -jar server.jar nogui"
 INIT_SCRIPT_LOCATION=init.sh
 
 echo "
