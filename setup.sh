@@ -61,28 +61,29 @@ echo "Baixando dependencias necessárias para o script..."
 pkg update
 pkg install wget openjdk-21
 
-FOLDER_NAME="~/minecraft_server"
+FOLDER_NAME="minecraft_server"
 echo "Criando pasta $FOLDER_NAME..."
-mkdir $FOLDER_NAME
+mkdir -p $FOLDER_NAME
+cd $FOLDER_NAME
 
 echo "Baixando configurações servidor..."
-curl -f https://raw.githubusercontent.com/joseiedo/termux_minecraft_server/refs/heads/main/server.base.properties -o $FOLDER_NAME/server.properties
-echo "eula=true\n" >> $FOLDER_NAME/eula.txt
-echo "online-mode=$ONLINE" >> $FOLDER_NAME/server.properties
+curl -f https://raw.githubusercontent.com/joseiedo/termux_minecraft_server/refs/heads/main/server.base.properties -o server.properties
+echo "eula=true\n" >> eula.txt
+echo "online-mode=$ONLINE" >> server.properties
 
 # Link retirado daqui -> https://www.minecraft.net/pt-br/download/server
 echo "Baixando .jar do minecraft..."
 wget https://piston-data.mojang.com/v1/objects/e6ec2f64e6080b9b5d9b471b291c33cc7f509733/server.jar -O ./server.jar
 
-INIT_SCRIPT=java -Xms1G -Xmx$MAX_RAM_GB -jar server.jar nogui
-INIT_SCRIPT_LOCATION=~/$FOLDER_NAME/init.sh
+INIT_SCRIPT="java -Xms1G -Xmx$MAX_RAM_GB -jar server.jar nogui"
+INIT_SCRIPT_LOCATION=init.sh
 
 echo "
 #!/data/data/com.termux/files/usr/bin/bash
 $INIT_SCRIPT
-" >> $INIT_SCRIPT
+" >> $INIT_SCRIPT_LOCATION
 
-chmod +x $INIT_SCRIPT
+chmod +x $INIT_SCRIPT_LOCATION
 
 ###################################
 # Instalação do Playit (opcional) #
@@ -108,8 +109,9 @@ while true; do
 done
 
 echo "Servidor baixado!"
-echo "Para iniciar o servidor, rode: $INIT_SCRIPT_LOCATION"
+echo "Para iniciar o servidor, rode: ~/$FOLDER_NAME/$INIT_SCRIPT_LOCATION"
 
+trap '' : 0
 echo '
 *************
 **** FIM **** 
