@@ -21,19 +21,13 @@ Script para instalar e rodar um servidor Minecraft Java no Termux.
 Baixe o script:
 
 ```
-wget https://raw.githubusercontent.com/joseiedo/termux_minecraft_server/main/setup.sh
-```
-
-Dê permissão de execução:
-
-```
-chmod +x setup.sh
+curl -fSl https://raw.githubusercontent.com/joseiedo/termux_minecraft_server/main/setup.sh -o setup.sh
 ```
 
 Execute:
 
 ```
-./setup.sh
+bash setup.sh
 ```
 
 Siga as instruções no terminal.

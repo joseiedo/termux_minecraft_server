@@ -2,20 +2,7 @@
 # Essa linha de cima é chamada de shebang. Serve pra dizer qual interpretador usar pra rodar o script.
 # https://pt.wikipedia.org/wiki/Shebang
 
-
-# Só pra avisar se o script der erro e parar de rodar.
-abort()
-{
-    echo >&2 '
-***************
-***   ERRO  ***
-***************
-'
-    exit 1
-}
-trap 'abort' 0
-set -e
-
+set -e # Se falhar algo, o script para.
 
 ########################################
 # Prompts de configurações necessárias #
@@ -107,10 +94,3 @@ done
 
 echo "Servidor baixado!"
 echo "Para iniciar o servidor, rode: ~/$FOLDER_NAME/$INIT_SCRIPT_LOCATION"
-
-trap '' : 0
-echo '
-*************
-**** FIM **** 
-*************
-'
