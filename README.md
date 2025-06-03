@@ -1,4 +1,3 @@
-(em progresso)
 # Minecraft Server no Termux
 
 Script para instalar e rodar um servidor Minecraft Java no Termux.
