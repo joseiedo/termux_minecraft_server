@@ -10,15 +10,15 @@ set -e # Se falhar algo, o script para.
 while true; do
   read -p "Deseja ativar o modo online? Isso bloqueia jogadores sem entrarem no seu servidor. (s/n): " choice
   case "$choice" in
-    [Ss]) 
+    [Ss])
       ONLINE=true
       break
       ;;
-    [Nn]) 
+    [Nn])
       ONLINE=false
       break
       ;;
-    *) 
+    *)
       echo "Input inválido. Use S (para Sim) ou N (para Não)."
       ;;
   esac
@@ -52,7 +52,7 @@ cd $FOLDER_NAME
 
 echo "Baixando configurações servidor..."
 curl -f https://raw.githubusercontent.com/joseiedo/termux_minecraft_server/refs/heads/main/server.base.properties -o server.properties
-echo "eula=true\n" >> eula.txt
+echo "eula=true" >> eula.txt
 echo "online-mode=$ONLINE" >> server.properties
 
 # Link retirado daqui -> https://www.minecraft.net/pt-br/download/server
@@ -75,22 +75,22 @@ chmod +x $INIT_SCRIPT_LOCATION
 while true; do
   read -p "Deseja usar o playit-cli como túnel? (s/n): " choice
   case "$choice" in
-    [Ss]) 
+    [Ss])
       echo "Baixando playit..."
       pkg install tur-repo
-      pkg update 
+      pkg update
       pkg install playit
       break
       ;;
-    [Nn]) 
+    [Nn])
       echo "Ignorando playit e finalizando script..."
       break
       ;;
-    *) 
+    *)
       echo "Input inválido. Use S (para Sim) ou N (para Não)."
       ;;
   esac
 done
 
 echo "Servidor baixado!"
-echo "Para iniciar o servidor, rode: ~/$FOLDER_NAME/$INIT_SCRIPT_LOCATION"
+echo "Para iniciar o servidor, rode: cd $FOLDER_NAME && ./$INIT_SCRIPT_LOCATION"
