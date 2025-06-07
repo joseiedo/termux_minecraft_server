@@ -44,7 +44,7 @@ Após a instalação:
 Se instalou o playit, execute:
 
 ```
-playit
+playit-cli
 ```
 
 Use o endereço fornecido para que outros jogadores se conectem.
